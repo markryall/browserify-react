@@ -1,0 +1,6 @@
+{
+  "name": "browserify-react",
+  "version": "0.0.1",
+  "description": "basic example using react and browserify",
+  "dependencies": { }
+}
