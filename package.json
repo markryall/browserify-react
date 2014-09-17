@@ -4,6 +4,7 @@
   "description": "basic example using react and browserify",
   "dependencies": {
     "browserify": "^5.11.1",
-    "react": "^0.11.1"
+    "react": "^0.11.1",
+    "reactify": "^0.14.0"
   }
 }
