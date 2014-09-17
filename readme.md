@@ -5,6 +5,7 @@
 - npm install --save react
 - npm install --save reactify
 - npm install --save uglifyjs
+- npm install --save superagent
 - browserify -t reactify src/main.js -o scripts.js
 - browserify -t reactify src/main.js -o scripts.js
 - python -m SimpleHTTPServer
