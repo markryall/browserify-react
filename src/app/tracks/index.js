@@ -15,7 +15,9 @@ module.exports = React.createClass({
 
     return <div>
       <span>{tracks.length} tracks</span>
-      { _.map(tracks, buildTrack) }
+      <table>
+        { _.map(tracks, buildTrack) }
+      </table>
     </div>
   }
 });
