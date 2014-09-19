@@ -6,10 +6,11 @@ var moment = require('moment');
 
 module.exports = React.createClass({
   render: function() {
-    var data = this.props.data;
-    console.log(data);
+    var data = this.props.data,
+     time = this.props.time;
+
     return <tr>
-      <td>{ moment.unix(parseInt(data.date.uts)).fromNow() }</td>
+      <td>{ moment(time).fromNow() }</td>
       <td><img src={ data.image[0]["#text"] } /></td>
       <td>{ data.name }</td>
       <td>{ data.artist["#text"] }</td>

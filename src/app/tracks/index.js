@@ -1,22 +1,26 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React = require('react');
-var Track = require('../track');
-var _     = require('lodash');
+var React  = require('react');
+var Track  = require('../track');
+var lodash = require('lodash');
 
 module.exports = React.createClass({
   render: function() {
     var tracks = this.props.data;
 
     function buildTrack(data) {
-      return <Track data={ data } />
+      var time = new Date().getTime();
+      if (data.date) {
+        time = parseInt(data.date.uts) * 1000;
+      }
+      return <Track key={ time } data={ data } time={ time } />
     }
 
     return <div>
-      <span>{tracks.length} tracks</span>
+      <span>{ tracks.length } tracks</span>
       <table>
-        { _.map(tracks, buildTrack) }
+        { lodash.map(tracks, buildTrack) }
       </table>
     </div>
   }

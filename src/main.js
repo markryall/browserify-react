@@ -2,11 +2,11 @@
 "use strict";
 
 var React = require('react');
-var app = require('./app');
+var App = require('./app');
 
 global.React = React;
 
 React.renderComponent(
-  <app />,
+  <App />,
   document.body
 )
