@@ -7,7 +7,8 @@
 - npm install --save uglifyjs
 - npm install --save superagent
 - npm install --save lodash
+- npm install --save moment
 - browserify -t reactify src/main.js -o scripts.js
-- browserify -t reactify src/main.js -o scripts.js
+- browserify -t reactify src/main.js | uglify > scripts.js
 - python -m SimpleHTTPServer
 - [open](http://localhost:8000)
