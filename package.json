@@ -4,11 +4,19 @@
   "description": "basic example using react and browserify",
   "dependencies": {
     "browserify": "^5.11.1",
+    "jest-cli": "^0.1.18",
     "lodash": "^2.4.1",
     "moment": "^2.8.3",
     "react": "^0.11.1",
+    "react-tools": "^0.11.2",
     "reactify": "^0.14.0",
     "superagent": "^0.18.2",
     "uglifyjs": "^2.3.6"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   }
 }

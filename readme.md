@@ -8,6 +8,9 @@
 - npm install --save superagent
 - npm install --save lodash
 - npm install --save moment
+- npm install --save jest-cli
+- npm install --save react-tools
+- jest
 - browserify -t reactify src/main.js -o scripts.js
 - browserify -t reactify src/main.js | uglify > scripts.js
 - python -m SimpleHTTPServer
