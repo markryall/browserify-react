@@ -4,6 +4,7 @@
   "description": "basic example using react and browserify",
   "dependencies": {
     "browserify": "^5.11.1",
+    "lodash": "^2.4.1",
     "react": "^0.11.1",
     "reactify": "^0.14.0",
     "superagent": "^0.18.2",

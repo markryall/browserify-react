@@ -5,7 +5,7 @@ var superagent = require('superagent');
 global.superagent = superagent;
 
 module.exports = {
-  retrieveTracks: function(username) {
+  retrieveTracks: function(username, handler) {
     var url, agent;
     url = "http://ws.audioscrobbler.com/2.0/";
     superagent('GET', url)
@@ -15,7 +15,7 @@ module.exports = {
       .query({ user: username })
       .end(function(err, res) {
         if (res && res.text) {
-          console.log(JSON.parse(res.text));
+          handler.success(JSON.parse(res.text));
         }
       });
   }
