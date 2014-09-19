@@ -14,8 +14,16 @@ module.exports = {
       .query('format=json')
       .query({ user: username })
       .end(function(err, res) {
+        if (err) {
+          handler.failure('network error occurred');
+        }
         if (res && res.text) {
-          handler.success(JSON.parse(res.text));
+          var data = JSON.parse(res.text);
+          if (data.error) {
+            handler.failure(data.message);
+          } else {
+            handler.success(data);
+          }
         }
       });
   }

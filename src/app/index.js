@@ -9,6 +9,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       name: '',
+      error: null,
       tracks: []
     }
   },
@@ -28,11 +29,21 @@ module.exports = React.createClass({
     });
   },
 
+  failure: function(data) {
+    this.setState({
+      error: data
+    });
+  },
+
   render: function() {
-    var tracksComponent = false;
+    var component = false;
 
     if (this.state.tracks.length > 0) {
-      tracksComponent = <Tracks data={ this.state.tracks } />
+      component = <Tracks data={ this.state.tracks } />
+    }
+
+    if (this.state.error) {
+      component = <span>{ this.state.error }</span>
     }
 
     return (
@@ -41,7 +52,7 @@ module.exports = React.createClass({
           <input type="text" id="username" name="username" onChange={ this._nameChanged } />
           <input type="submit" value="search" />
         </form>
-        { tracksComponent }
+        { component }
       </div>
     );
   }
