@@ -12,7 +12,7 @@ stateManager = {
       name: '',
       waiting: false,
       error: null,
-      tracks: []
+      tracks: null
     }
   },
 
@@ -34,7 +34,11 @@ stateManager = {
   },
 
   started: function() {
-    hasState.setState({ waiting: true });
+    hasState.setState({
+      waiting: true,
+      error: null,
+      tracks: null
+    });
   },
 
   success: function(data) {

@@ -9,6 +9,10 @@ module.exports = React.createClass({
   render: function() {
     var tracks = this.props.data;
 
+    if (!tracks || tracks.length < 1) {
+      return false;
+    }
+
     function buildTrack(data) {
       var time = new Date().getTime();
       if (data.date) {
