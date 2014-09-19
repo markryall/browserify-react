@@ -6,6 +6,7 @@ global.superagent = superagent;
 
 module.exports = {
   retrieveTracks: function(username, handler) {
+    handler.started();
     var url, agent;
     url = "http://ws.audioscrobbler.com/2.0/";
     superagent('GET', url)

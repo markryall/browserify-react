@@ -20,7 +20,9 @@ module.exports = React.createClass({
     return <div>
       <span>{ tracks.length } tracks</span>
       <table>
-        { lodash.map(tracks, buildTrack) }
+        <tbody>
+          { lodash.map(tracks, buildTrack) }
+        </tbody>
       </table>
     </div>
   }

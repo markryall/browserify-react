@@ -9,6 +9,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       name: '',
+      waiting: false,
       error: null,
       tracks: []
     }
@@ -23,20 +24,29 @@ module.exports = React.createClass({
     this.setState({ name: e.target.value });
   },
 
+  started: function() {
+    this.setState({
+      waiting: true
+    });
+  },
+
   success: function(data) {
     this.setState({
+      waiting: false,
       tracks: data.recenttracks.track
     });
   },
 
   failure: function(data) {
     this.setState({
+      waiting: false,
       error: data
     });
   },
 
   render: function() {
-    var component = false;
+    var component = false,
+      button;
 
     if (this.state.tracks.length > 0) {
       component = <Tracks data={ this.state.tracks } />
@@ -46,11 +56,17 @@ module.exports = React.createClass({
       component = <span>{ this.state.error }</span>
     }
 
+    if (this.state.waiting) {
+      button = <img id="loader" src="loader.gif" />
+    } else {
+      button = <input type="submit" value="search" />
+    }
+
     return (
       <div>
         <form onSubmit={ this._submitted }>
           <input type="text" id="username" name="username" onChange={ this._nameChanged } />
-          <input type="submit" value="search" />
+          { button }
         </form>
         { component }
       </div>

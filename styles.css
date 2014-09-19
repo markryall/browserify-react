@@ -10,3 +10,10 @@ body {
 td {
   padding: 5px;
 }
+
+#loader {
+  height: 15px;
+  width: 15px;
+  padding: 0px;
+  margin: 0px;
+}
