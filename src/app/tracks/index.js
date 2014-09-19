@@ -2,6 +2,7 @@
 "use strict";
 
 var React = require('react');
+var Track = require('../track');
 var _     = require('lodash');
 
 module.exports = React.createClass({
@@ -9,7 +10,7 @@ module.exports = React.createClass({
     var tracks = this.props.data;
 
     function buildTrack(data) {
-      return <div>{ data.name }</div>
+      return <Track data={ data } />
     }
 
     return <div>

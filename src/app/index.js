@@ -3,7 +3,7 @@
 
 var React   = require('react');
 var actions = require('./actions');
-var tracks  = require('./tracks');
+var Tracks  = require('./tracks');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -32,7 +32,7 @@ module.exports = React.createClass({
     var tracksComponent = false;
 
     if (this.state.tracks.length > 0) {
-      tracksComponent = <tracks data={ this.state.tracks } />
+      tracksComponent = <Tracks data={ this.state.tracks } />
     }
 
     return (
