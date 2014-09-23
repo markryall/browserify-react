@@ -1,10 +1,32 @@
 "use strict";
 
-var actions = require('./actions');
+var emitter = require('../emitter');
 
 var nullComponent = { setState: function () {} },
  hasState = nullComponent,
  stateManager;
+
+emitter.on('retrieveTracksStart', function() {
+  hasState.setState({
+    waiting: true,
+    error: null,
+    tracks: null
+  });
+});
+
+emitter.on('retrieveTracksSuccess', function(data) {
+  hasState.setState({
+    waiting: false,
+    tracks: data.recenttracks.track
+  });
+});
+
+emitter.on('retrieveTracksFailure', function(data) {
+  hasState.setState({
+    waiting: false,
+    error: data
+  });
+});
 
 stateManager = {
   getInitialState: function () {
@@ -30,29 +52,7 @@ stateManager = {
 
   submitted: function(e) {
     e.preventDefault();
-    actions.retrieveTracks(hasState.state.name, stateManager);
-  },
-
-  started: function() {
-    hasState.setState({
-      waiting: true,
-      error: null,
-      tracks: null
-    });
-  },
-
-  success: function(data) {
-    hasState.setState({
-      waiting: false,
-      tracks: data.recenttracks.track
-    });
-  },
-
-  failure: function(data) {
-    hasState.setState({
-      waiting: false,
-      error: data
-    });
+    emitter.emit('retrieveTracks', hasState.state.name);
   }
 }
 
