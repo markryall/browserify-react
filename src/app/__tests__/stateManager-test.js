@@ -15,14 +15,28 @@ describe('stateManager', function() {
     });
   });
 
-  it('should set name when nameChanged', function() {
-    var state = {};
-    stateManager.remember({
-      setState: function(newState) { state = newState; }
+  describe('when state owner is stored', function() {
+    var state;
+
+    beforeEach(function () {
+      state = {};
+      stateManager.remember({
+        setState: function(newState) { state = newState; }
+      });
     });
-    stateManager.nameChanged({
-      target: { value: 'new name' }
+
+    it('should set name when nameChanged', function() {
+      stateManager.nameChanged({
+        target: { value: 'new name' }
+      });
+      expect(state.name).toEqual('new name');
     });
-    expect(state.name).toEqual('new name');
+
+    it('should set name when nameChanged', function() {
+      stateManager.nameChanged({
+        target: { value: 'new name' }
+      });
+      expect(state.name).toEqual('new name');
+    });
   });
 });

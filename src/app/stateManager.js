@@ -6,28 +6,6 @@ var nullComponent = { setState: function () {} },
  hasState = nullComponent,
  stateManager;
 
-emitter.on('retrieveTracksStart', function() {
-  hasState.setState({
-    waiting: true,
-    error: null,
-    tracks: null
-  });
-});
-
-emitter.on('retrieveTracksSuccess', function(data) {
-  hasState.setState({
-    waiting: false,
-    tracks: data.recenttracks.track
-  });
-});
-
-emitter.on('retrieveTracksFailure', function(data) {
-  hasState.setState({
-    waiting: false,
-    error: data
-  });
-});
-
 stateManager = {
   getInitialState: function () {
     return {
@@ -55,5 +33,27 @@ stateManager = {
     emitter.emit('retrieveTracks', hasState.state.name);
   }
 }
+
+emitter.on('retrieveTracksStart', function() {
+  hasState.setState({
+    waiting: true,
+    error: null,
+    tracks: null
+  });
+});
+
+emitter.on('retrieveTracksSuccess', function(data) {
+  hasState.setState({
+    waiting: false,
+    tracks: data.recenttracks.track
+  });
+});
+
+emitter.on('retrieveTracksFailure', function(data) {
+  hasState.setState({
+    waiting: false,
+    error: data
+  });
+});
 
 module.exports = stateManager
