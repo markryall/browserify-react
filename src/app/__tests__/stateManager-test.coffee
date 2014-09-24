@@ -20,12 +20,10 @@ describe 'stateManager', ()->
 
     it 'should set name when nameChanged', ()->
       stateManager.nameChanged
-        target:
-          value: 'new name'
-      expect(state.name).toEqual('new name')
+        target: value: 'new name'
+      expect(state.name).toEqual 'new name'
 
     it 'should set name when nameChanged', ()->
       stateManager.nameChanged
-        target:
-          value: 'new name'
-      expect(state.name).toEqual('new name')
+        target: value: 'new name'
+      expect(state.name).toEqual 'new name'
