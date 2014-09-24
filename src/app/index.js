@@ -3,7 +3,7 @@
 
 var React         = require('react');
 var Tracks        = require('./tracks');
-var SubmitButton  = require('./submitButton');
+var SubmitButton  = require('./submitButton/index.coffee');
 var stateManager  = require('./stateManager');
 
 module.exports = React.createClass({

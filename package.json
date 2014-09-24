@@ -17,9 +17,6 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
-    "testFileExtensions": [
-      "coffee",
-      "js"
-    ]
+    "testFileExtensions": [ "coffee", "js" ]
   }
 }
